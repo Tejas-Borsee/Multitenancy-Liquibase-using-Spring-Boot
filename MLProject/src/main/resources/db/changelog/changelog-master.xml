@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+        http://www.liquibase.org/xml/ns/pro
+        http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
+
+
+        <changeSet id="1" author="Tejas Borse">
+                <createTable tableName="user_data">
+                        <column name="user_id" type="int" autoIncrement="true">
+                                <constraints primaryKey="true"/>
+                        </column>
+                        <column name="user_name" type="varchar(50)"/>
+                        <column name="user_aadhar_no" type="BIGINT"/>
+                        <column name="user_pan_no" type="varchar(20)"/>
+                </createTable>
+        </changeSet>
+
+        <changeSet id="2" author="Tejas Borse">
+                <createTable tableName="user_details">
+                        <column name="tenant_id" type="int" autoIncrement="true">
+                                <constraints primaryKey="true"/>
+                        </column>
+                        <column name="tenant_name" type="varchar(50)"/>
+                </createTable>
+        </changeSet>
+
+        <changeSet id="3" author="Tejas Borse" context="insert-data">
+                <insert tableName="user_details">
+                        <column name="tenant_name" value="${tenantName}"/>
+                </insert>
+        </changeSet>
+
+</databaseChangeLog>
